@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    overflow:hidden;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    position:relative;
+
+    background:linear-gradient(-45deg,#050816,#111827,#0f172a,#1e293b);
+    background-size:400% 400%;
+    animation:bgMove 15s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.stars{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+}
+
+.star{
+    position:absolute;
+    background:white;
+    border-radius:50%;
+    animation:twinkle infinite alternate;
+}
+
+@keyframes twinkle{
+    from{
+        opacity:.3;
+        transform:scale(.6);
+    }
+    to{
+        opacity:1;
+        transform:scale(1.4);
+    }
+}
+
+.glass{
+    width:92%;
+    max-width:900px;
+    padding:35px;
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    box-shadow:
+        0 0 60px rgba(255,255,255,.08),
+        0 25px 60px rgba(0,0,0,.5);
+
+    text-align:center;
+    position:relative;
+    z-index:10;
+}
+
+.title{
+
+    font-size:clamp(2rem,7vw,4.7rem);
+
+    font-weight:900;
+
+    line-height:1.2;
+
+    background:linear-gradient(90deg,#FFD700,#fff,#FFD700);
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:glow 2s infinite alternate;
+
+}
+
+@keyframes glow{
+
+from{
+filter:drop-shadow(0 0 5px gold);
+}
+
+to{
+filter:drop-shadow(0 0 30px gold);
+}
+
+}
+
+.name{
+
+font-size:clamp(1.6rem,5vw,2.8rem);
+
+margin-top:18px;
+
+font-weight:700;
+
+color:white;
+
+}
+
+.subtitle{
+
+margin-top:18px;
+
+font-size:clamp(1rem,3vw,1.3rem);
+
+line-height:1.7;
+
+color:#ddd;
+
+}
+
+.cake{
+
+font-size:clamp(5rem,20vw,9rem);
+
+margin-top:30px;
+
+animation:bounce 2.5s infinite;
+
+}
+
+@keyframes bounce{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-18px);
+}
+
+}
+
+.button{
+
+margin-top:30px;
+
+width:100%;
+max-width:320px;
+
+padding:16px;
+
+border:none;
+
+border-radius:50px;
+
+font-size:clamp(1rem,4vw,1.3rem);
+
+font-weight:bold;
+
+cursor:pointer;
+
+background:linear-gradient(90deg,#FFD700,#ff8c00);
+
+color:#111;
+
+transition:.35s;
+
+box-shadow:0 0 25px gold;
+
+}
+
+.button:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 50px gold;
+
+}
+
+.message{
+
+display:none;
+
+margin-top:25px;
+
+font-size:clamp(1rem,4vw,1.5rem);
+
+line-height:1.8;
+
+color:white;
+
+animation:fade .8s;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.balloon{
+
+position:absolute;
+
+bottom:-120px;
+
+font-size:clamp(35px,8vw,55px);
+
+animation:float linear infinite;
+
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+100%{
+transform:translateY(-120vh);
+}
+
+}
+
+.heart{
+
+position:absolute;
+
+font-size:20px;
+
+color:#ff4b91;
+
+opacity:.8;
+
+animation:hearts linear infinite;
+
+}
+
+@keyframes hearts{
+
+0%{
+transform:translateY(110vh);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+
+}
+
+@media(max-width:768px){
+
+.glass{
+padding:25px 20px;
+border-radius:20px;
+}
+
+}
+
+@media(max-width:480px){
+
+.glass{
+padding:20px 15px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="glass">
+
+<h1 class="title">🎉 HAPPY BIRTHDAY 🎉</h1>
+
+<h2 class="name">Dear ❤️</h2>
+
+<p class="subtitle">
+May your life be filled with happiness, success, love and unforgettable memories.
+</p>
+
+<div class="cake">🎂</div>
+
+<button class="button" onclick="surprise()">
+🎁 Open Surprise
+</button>
+
+<div class="message" id="wish">
+🎉 Wishing you endless joy, beautiful memories, success, love, good health and happiness. Happy Birthday! ❤️🎂🎈
+</div>
+
+</div>
+<script>
+/* ===== Create Stars ===== */
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 200; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    const size = Math.random() * 3 + 1;
+    star.style.width = size + "px";
+    star.style.height = size + "px";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDuration = (1 + Math.random() * 3) + "s";
+    stars.appendChild(star);
+}
+
+/* ===== Floating Balloons ===== */
+for (let i = 0; i < 20; i++) {
+
+    const balloon = document.createElement("div");
+    balloon.className = "balloon";
+    balloon.innerHTML = "🎈";
+
+    balloon.style.left = Math.random() * 100 + "vw";
+    balloon.style.animationDuration = (6 + Math.random() * 5) + "s";
+    balloon.style.fontSize = (40 + Math.random() * 25) + "px";
+
+    document.body.appendChild(balloon);
+}
+
+/* ===== Floating Hearts ===== */
+for (let i = 0; i < 35; i++) {
+
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+}
+
+/* ===== Surprise Button ===== */
+
+function surprise(){
+
+    document.getElementById("wish").style.display = "block";
+
+    launchConfetti();
+
+}
+
+/* ===== Confetti ===== */
+
+function launchConfetti(){
+
+    const colors = [
+        "#FFD700",
+        "#ff4b91",
+        "#00e5ff",
+        "#7CFC00",
+        "#ffffff",
+        "#ff9800"
+    ];
+
+    for(let i=0;i<180;i++){
+
+        const piece=document.createElement("div");
+
+        piece.style.position="fixed";
+        piece.style.width="8px";
+        piece.style.height="16px";
+
+        piece.style.left=Math.random()*100+"vw";
+        piece.style.top="-20px";
+
+        piece.style.background=
+        colors[Math.floor(Math.random()*colors.length)];
+
+        piece.style.opacity="1";
+
+        piece.style.transform=
+        "rotate("+Math.random()*360+"deg)";
+
+        piece.style.transition="4s linear";
+
+        document.body.appendChild(piece);
+
+        setTimeout(()=>{
+
+            piece.style.top="110vh";
+
+            piece.style.left=
+            (Math.random()*100)+"vw";
+
+            piece.style.opacity="0";
+
+        },30);
+
+        setTimeout(()=>{
+            piece.remove();
+        },4500);
+
+    }
+
+}
+
+/* ===== Mouse Glow ===== */
+
+document.addEventListener("mousemove",function(e){
+
+    const glow=document.createElement("div");
+
+    glow.style.position="fixed";
+
+    glow.style.left=e.clientX+"px";
+
+    glow.style.top=e.clientY+"px";
+
+    glow.style.width="12px";
+
+    glow.style.height="12px";
+
+    glow.style.borderRadius="50%";
+
+    glow.style.pointerEvents="none";
+
+    glow.style.background="gold";
+
+    glow.style.boxShadow="0 0 20px gold";
+
+    glow.style.opacity=".8";
+
+    glow.style.transition=".8s";
+
+    document.body.appendChild(glow);
+
+    setTimeout(()=>{
+
+        glow.style.opacity="0";
+
+        glow.style.transform="scale(4)";
+
+    },20);
+
+    setTimeout(()=>{
+        glow.remove();
+    },800);
+
+});
+
+</script>
+
+</body>
+</html>
